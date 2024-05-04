@@ -8,6 +8,7 @@ import { setUser } from './store/UserSlice'
 import { Outlet } from 'react-router-dom'
 import Header from './components/Header'
 import Footer from './components/Footer'
+import './socketIO/index'
 
 const App = () => {
   const dispatch = useDispatch()

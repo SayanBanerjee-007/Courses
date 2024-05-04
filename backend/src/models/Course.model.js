@@ -38,6 +38,10 @@ const courseSchema = new Schema(
       type: String,
       required: true,
     },
+    likes: {
+      type: Number,
+      default: 0,
+    },
     prerequisites: [{ type: String, trim: true }],
     syllabus: [
       {

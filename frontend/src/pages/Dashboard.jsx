@@ -8,7 +8,7 @@ const Dashboard = () => {
   const myCourses = allCourses.filter(course =>
     course.students.some(student => student._id === userData._id)
   )
-  console.log('myCourses', myCourses)
+  // const myCourses = null
 
   return (
     <section className="flex flex-col items-center md:my-10 ">
@@ -55,48 +55,35 @@ const Dashboard = () => {
           My Courses
         </h3>
         <>
-          <div className="w-full grid sm:grid-rows-1 md:grid-cols-2 xl:grid-cols-3 py-20 px-2 lg:px-10 gap-20">
-            {myCourses.map(course => {
-              console.log('called')
-              return (
-                <div
-                  className="flex flex-col items-center justify-center "
-                  key={course._id}
-                >
-                  <Card
-                    id={course._id}
-                    thumbnail={course.thumbnail}
-                    courseName={course.name}
-                    instructorName={course.instructor}
-                    description={course.description}
-                    showProgressBar={true}
-                    progressBarWidth="45%"
-                    dueDate="12/12/2024"
-                  />
-                </div>
-              )
-            })}
-            {myCourses.map(course => {
-              console.log('called')
-              return (
-                <div
-                  className="flex flex-col justify-center "
-                  key={course._id}
-                >
-                  <Card
-                    id={course._id}
-                    thumbnail={course.thumbnail}
-                    courseName={course.name}
-                    instructorName={course.instructor}
-                    description={course.description}
-                    showProgressBar={true}
-                    progressBarWidth="45%"
-                    dueDate="12/12/2024"
-                  />
-                </div>
-              )
-            })}
-            {myCourses.map(course => {
+          {!myCourses ? (
+            <div className="flex justify-center items-center h-full">
+              <h1 className="text-4xl font-bold  text-gray-700 dark:text-gray-400">
+                No course is purchased yet.
+              </h1>
+            </div>
+          ) : (
+            <div className="w-full grid sm:grid-rows-1 md:grid-cols-2 xl:grid-cols-3 py-20 px-2 lg:px-10 gap-20">
+              {myCourses.map(course => {
+                console.log('called')
+                return (
+                  <div
+                    className="flex flex-col items-center justify-center "
+                    key={course._id}
+                  >
+                    <Card
+                      id={course._id}
+                      thumbnail={course.thumbnail}
+                      courseName={course.name}
+                      instructorName={course.instructor}
+                      description={course.description}
+                      showProgressBar={true}
+                      progressBarWidth="45%"
+                      dueDate="12/12/2024"
+                    />
+                  </div>
+                )
+              })}
+              {/* {myCourses.map(course => {
               console.log('called')
               return (
                 <div
@@ -156,7 +143,28 @@ const Dashboard = () => {
                 </div>
               )
             })}
-          </div>
+            {myCourses.map(course => {
+              console.log('called')
+              return (
+                <div
+                  className="flex flex-col justify-center "
+                  key={course._id}
+                >
+                  <Card
+                    id={course._id}
+                    thumbnail={course.thumbnail}
+                    courseName={course.name}
+                    instructorName={course.instructor}
+                    description={course.description}
+                    showProgressBar={true}
+                    progressBarWidth="45%"
+                    dueDate="12/12/2024"
+                  />
+                </div>
+              )
+            })} */}
+            </div>
+          )}
         </>
       </div>
     </section>

@@ -27,6 +27,7 @@ const CourseList = () => {
               courseName={course.name}
               instructorName={course.instructor}
               description={course.description}
+              likes={course.likes}
             />
           </div>
         ))}
